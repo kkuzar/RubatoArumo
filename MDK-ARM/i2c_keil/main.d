@@ -34,3 +34,5 @@ i2c_keil\main.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h
 i2c_keil\main.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h
 i2c_keil\main.o: ..\Drivers\BSP\stm32l4xx_nucleo_32.h
 i2c_keil\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+i2c_keil\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+i2c_keil\main.o: ../Src/pca9685.h

@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32L432xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32L4xx_HAL_Driver/Inc;../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32L4xx/Include;../Drivers/CMSIS/Include;..\Drivers\BSP</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32L4xx_HAL_Driver/Inc;../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32L4xx/Include;../Drivers/CMSIS/Include;..\Drivers\BSP;..\MDK-ARM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -571,6 +571,26 @@
               <FileName>stm32l4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32l4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>pca9685.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\pca9685.c</FilePath>
+            </File>
+            <File>
+              <FileName>pca9685.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\pca9685.h</FilePath>
+            </File>
+            <File>
+              <FileName>myi2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\myi2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>myi2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myi2c.c</FilePath>
             </File>
           </Files>
         </Group>

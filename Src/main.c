@@ -23,7 +23,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "pca9685.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +51,7 @@ __IO ITStatus UartReady = RESET;
 
 uint8_t mRxBuffer[8], mTxBuffer[8];
 
+uint16_t currentAngel;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -128,11 +132,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  PCA9685_Go();
+	setPWMFreq(50);
+
+	currentAngel = SERVO000;
+
+	
   while (1)
   {
-		// HAL_UART_Receive_IT(&huart1, mRxBuffer, 8);
+	  
+		// setPWM(0 , 200 ,200);
+		
     /* USER CODE END WHILE */
-
+	
     /* USER CODE BEGIN 3 */
 
   }
@@ -290,19 +302,58 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   UNUSED(huart);
 	
 	if (huart->Instance == USART1) {
-		 HAL_UART_Transmit(&huart1, mRxBuffer, 8,0xFFFF);
-		 printf("\n\r"); 
+		char angel[4], change[2], orien[1], motor[1], led_cmd;
+	  int theAngel, i, theChange, theMotor;
+		uint8_t tempArr[4];
+		
+		for (i = 0; i < 4 ; i ++) {
+			tempArr[i] = mRxBuffer[i];
+		}
+		
+		sprintf(&angel[0], "%c",tempArr[0]);
+		sprintf(&angel[1], "%c",tempArr[1]);
+		sprintf(&angel[2], "%c",tempArr[2]);
+		sprintf(&angel[3], "%c",tempArr[3]);
+		
+		
+		sprintf(&change[0], "%c",mRxBuffer[5]);
+		sprintf(&change[1], "%c",mRxBuffer[6]);
+		
+		sprintf(&orien[0], "%c",mRxBuffer[4]);
+		sprintf(&motor[0], "%c",mRxBuffer[7]);
+		
+		theAngel  = atoi(angel);
+		theChange = atoi(change);
+		theMotor  = atoi(motor);
+	
+	  printf("number is [%d]\n\r", theAngel);
+		printf("change value is [%d]\n\r", theChange);
+		printf("orientation is [%c]\n\r", orien[0]);
+		printf("Chosen Motor is [%d]\n\r", theMotor);
+		
+		currentAngel = (uint16_t)theAngel; // Abosulute Angel
+		
+		led_cmd = orien[0];
+		
+		if (led_cmd == 'O') {
+		   BSP_LED_On(LED3);
+		}
+		
+		if (led_cmd == 'F') {
+		    BSP_LED_Off(LED3);
+		}
+		
+		
+		setPWM(0 , SERVOMIN , currentAngel);
 	}
 	// HAL_UART_Transmit(&huart1, (uint8_t *)&cAlmStr, 16,0xFFFF);
 	// HAL_UART_Receive_IT(&huart1, (uint8_t *)&RxBuffer, 8);   
 
-  UartReady = SET;
 }
 /* USER CODE END 4 */
 

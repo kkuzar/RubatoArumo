@@ -23,6 +23,8 @@
 "i2c_keil\main.o"
 "i2c_keil\stm32l4xx_it.o"
 "i2c_keil\stm32l4xx_hal_msp.o"
+"i2c_keil\pca9685.o"
+"i2c_keil\myi2c.o"
 "i2c_keil\stm32l4xx_nucleo_32.o"
 --library_type=microlib --strict --scatter "i2c_keil\i2c_keil.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
