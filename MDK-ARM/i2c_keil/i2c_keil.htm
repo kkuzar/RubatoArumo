@@ -3,7 +3,7 @@
 <title>Static Call Graph - [i2c_keil\i2c_keil.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image i2c_keil\i2c_keil.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Mar 13 21:22:56 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Mar 14 04:02:31 2019
 <BR><P>
 <H3>Maximum Stack Usage =        256 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -855,8 +855,8 @@ Global Symbols
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 226 bytes, Stack size 48 bytes, main.o(i.HAL_UART_RxCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<P><STRONG><a name="[98]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 248 bytes, Stack size 40 bytes, main.o(i.HAL_UART_RxCpltCallback))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPWM
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LED_On
@@ -1083,7 +1083,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf3.o(i.__0printf$3)
 </UL>
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_OscConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -1196,14 +1196,14 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[4b]"></a>UART_RxISR_16BIT</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, stm32l4xx_hal_uart.o(i.UART_RxISR_16BIT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = UART_RxISR_16BIT &rArr; HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = UART_RxISR_16BIT &rArr; HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32l4xx_hal_uart.o(i.HAL_UART_Receive_IT)
 </UL>
 <P><STRONG><a name="[4a]"></a>UART_RxISR_8BIT</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, stm32l4xx_hal_uart.o(i.UART_RxISR_8BIT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = UART_RxISR_8BIT &rArr; HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = UART_RxISR_8BIT &rArr; HAL_UART_RxCpltCallback &rArr; setPWM &rArr; PCA9685_write &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>

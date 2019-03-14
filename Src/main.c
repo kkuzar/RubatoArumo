@@ -51,7 +51,7 @@ __IO ITStatus UartReady = RESET;
 
 uint8_t mRxBuffer[8], mTxBuffer[8];
 
-uint16_t currentAngel;
+uint16_t currentAngel[6] = {350};
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -135,9 +135,7 @@ int main(void)
   PCA9685_Go();
 	setPWMFreq(50);
 
-	currentAngel = SERVO000;
 
-	
   while (1)
   {
 	  
@@ -310,6 +308,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		char angel[4], change[2], orien[1], motor[1], led_cmd;
 	  int theAngel, i, theChange, theMotor;
 		uint8_t tempArr[4];
+		theMotor = 0;
 		
 		for (i = 0; i < 4 ; i ++) {
 			tempArr[i] = mRxBuffer[i];
@@ -331,12 +330,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		theChange = atoi(change);
 		theMotor  = atoi(motor);
 	
+		/*
 	  printf("number is [%d]\n\r", theAngel);
 		printf("change value is [%d]\n\r", theChange);
 		printf("orientation is [%c]\n\r", orien[0]);
 		printf("Chosen Motor is [%d]\n\r", theMotor);
+		*/
 		
-		currentAngel = (uint16_t)theAngel; // Abosulute Angel
 		
 		led_cmd = orien[0];
 		
@@ -348,8 +348,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		    BSP_LED_Off(LED3);
 		}
 		
+		if (led_cmd == 'L') {
+			if (currentAngel[theMotor] >= SERVOMAX ) {
+				currentAngel[theMotor] = SERVOMAX;
+			} else {
+			  currentAngel[theMotor] += (uint16_t)theChange;
+			}
+		}
 		
-		setPWM(0 , SERVOMIN , currentAngel);
+		if (led_cmd == 'R') {
+			
+			if (currentAngel[theMotor] <= SERVOMIN ) {
+				currentAngel[theMotor] = SERVOMIN;
+			} else {
+			  currentAngel[theMotor] -= (uint16_t)theChange;
+			}
+		}
+		
+		 printf("%d\n\r", currentAngel[theMotor]);
+		
+		 // Abosulute Angel
+		
+		setPWM(theMotor , SERVOMIN , currentAngel[theMotor]);
 	}
 	// HAL_UART_Transmit(&huart1, (uint8_t *)&cAlmStr, 16,0xFFFF);
 	// HAL_UART_Receive_IT(&huart1, (uint8_t *)&RxBuffer, 8);   
