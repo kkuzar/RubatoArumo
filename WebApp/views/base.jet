@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+
+   <div id="app">
+        <index></index>
+   </div>
+
+  <script src="/public/js/index.js"></script>
+  </body>
+</html>
